@@ -1,8 +1,9 @@
 import * as koa from 'koa'
 import * as compose from 'koa-compose';
 import {Context} from "koa";
+import {ProxyServer, RuleFn} from './proxyServer'
 
-class Server {
+export class Server {
 
     /**
      * Web Application
@@ -20,10 +21,16 @@ class Server {
     private host: string = 'localhost';
 
     /**
+     * Proxy Server
+     */
+    proxy: ProxyServer;
+
+    /**
      *Constructor
      */
     constructor() {
         this.app = new koa();
+        this.proxy = new ProxyServer();
     }
 
     /**
@@ -42,6 +49,15 @@ class Server {
     listen(port: number = 8062, host: string = 'localhost') {
         this.port = port;
         this.host = host;
+        this.app.listen(port, host);
+    }
+
+    /**
+     * ProxyRule
+     * @param {RuleFn} rule
+     */
+    rule(rule: RuleFn) {
+        this.proxy.rule(rule);
     }
 
 }

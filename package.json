@@ -7,14 +7,18 @@
   "author": "I'amee <admin@cavacn.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/http-proxy": "^1.12.0",
+    "http-proxy": "^1.16.2",
     "koa": "^2.3.0",
     "koa-compose": "^4.0.0",
     "node-fetch": "^1.7.1"
   },
-  "typings": "dist/index.d.ts",
+  "typings": "dist/Server.d.ts",
   "devDependencies": {
     "@types/koa": "^2.0.39",
     "@types/koa-compose": "^3.2.2",
-    "@types/node-fetch": "^1.6.7"
+    "@types/koa-router": "^7.0.22",
+    "@types/node-fetch": "^1.6.7",
+    "koa-router": "^7.2.1"
   }
 }
